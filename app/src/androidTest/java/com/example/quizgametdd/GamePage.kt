@@ -23,15 +23,23 @@ GamePage(
         classTypeMatchers = classTypeMatchers
     )
 
-    private val choicesListUi = choices.map {
+    private val listChoicesId = listOf(
+        R.id.firstChoiceButton,
+        R.id.secondChoiceButton,
+        R.id.threeChoiceButton,
+        R.id.fourChoiceButton,
+    )
+    private val choicesListUi = choices.mapIndexed { index, text ->
         ChoiceUiState(
-            text = it,
+            id = listChoicesId[index],
+            text = text,
             containerIdViewMatcher = containerIdViewMatcher,
             classTypeMatchers = classTypeMatchers
         )
     }
 
     private val checkButtonUi = ButtonUi(
+        id = R.id.checkButton,
         textResId = R.string.check,
         color = "#F2BD00",
         containerIdViewMatcher = containerIdViewMatcher,
@@ -39,7 +47,9 @@ GamePage(
     )
 
     private val nextButtonUI = ButtonUi(
-        textResId = R.string.next, color = "#0478FF",
+        id = R.id.nextButton,
+        textResId = R.string.next,
+        color = "#0478FF",
         containerIdViewMatcher = containerIdViewMatcher,
         classTypeMatchers = classTypeMatchers
     )
@@ -47,7 +57,7 @@ GamePage(
     fun assertAskQuestionState() {
         questionUi.assertTextVisible()
         choicesListUi.forEach {
-            it.assertAvalableToChooseState()
+            it.assertAvailableToChooseState()
         }
         checkButtonUi.assertNotVisible()
         nextButtonUI.assertNotVisible()
@@ -59,9 +69,9 @@ GamePage(
 
     fun assertFirstChoiceMakeState() {
         questionUi.assertTextVisible()
-        choicesListUi.first().assertNotAvalableToChooseState()
+        choicesListUi.first().assertNotAvailableToChooseState()
       for (i in 1 until choicesListUi.size ){
-          choicesListUi[i].assertAvalableToChooseState()
+          choicesListUi[i].assertAvailableToChooseState()
       }
         checkButtonUi.assertVisible()
         nextButtonUI.assertNotVisible()
@@ -75,7 +85,7 @@ GamePage(
         questionUi.assertTextVisible()
         choicesListUi.first().assertCorrectState()
         for (i in 1 until choicesListUi.size ){
-            choicesListUi[i].assertNotAvalableToChooseState()
+            choicesListUi[i].assertNotAvailableToChooseState()
         }
         checkButtonUi.assertNotVisible()
         nextButtonUI.assertVisible()
@@ -89,9 +99,9 @@ GamePage(
         questionUi.assertTextVisible()
         choicesListUi.forEachIndexed { index, choice ->
             if (index == 1){
-                choice.assertNotAvalableToChooseState()
+                choice.assertNotAvailableToChooseState()
             }else{
-                choice.assertAvalableToChooseState()
+                choice.assertAvailableToChooseState()
             }
         }
         checkButtonUi.assertVisible()
@@ -102,8 +112,8 @@ GamePage(
         questionUi.assertTextVisible()
         choicesListUi.first().assertCorrectState()
         choicesListUi[1].assertNotCorrectState()
-        choicesListUi[2].assertNotAvalableToChooseState()
-        choicesListUi[3].assertNotAvalableToChooseState()
+        choicesListUi[2].assertNotAvailableToChooseState()
+        choicesListUi[3].assertNotAvailableToChooseState()
         checkButtonUi.assertNotVisible()
         nextButtonUI.assertVisible()
     }

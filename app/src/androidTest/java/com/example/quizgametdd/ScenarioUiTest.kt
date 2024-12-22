@@ -37,23 +37,22 @@ class ScenarioUiTest {
 
         gamePage.assertAskQuestionState()
 
-        gamePage.clickFirstChoisce()
+        gamePage.clickFirstChoice()
         gamePage.assertFirstChoiceMakeState()
 
         gamePage.clickCheck()
         gamePage.assertAnswerChoiceStateFirstCorrect()
-        gamePage.clickNext()
     }
 
     fun caseNumber2(){
 
-        gamePage.aassertAsqQuestionState()
+        gamePage.assertAskQuestionState()
 
-        gamePage.clickFirstChoisce()
+        gamePage.clickFirstChoice()
         gamePage.assertFirstChoiceMakeState()
 
         gamePage.clickSecondChoice()
-        gamePage.assetSecondChoiceMakeState()
+        gamePage.assertSecondChoiceMakeState()
 
         gamePage.clickCheck()
         gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()

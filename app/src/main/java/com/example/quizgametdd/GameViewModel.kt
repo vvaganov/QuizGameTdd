@@ -2,6 +2,14 @@ package com.example.quizgametdd
 
 class GameViewModel(private val repository: GameRepository) {
 
+    fun init(): GameUiState {
+        val data = repository.questionAndChoices()
+        return GameUiState.AskQuestion(
+            question = data.question,
+            choices = data.choices
+        )
+    }
+
     fun chooseFirst(): GameUiState {
         repository.saveUserChoice(index = 0)
         val data = repository.questionAndChoices()
@@ -83,15 +91,4 @@ class GameViewModel(private val repository: GameRepository) {
             }
         )
     }
-
-    fun init(): GameUiState {
-        val data = repository.questionAndChoices()
-        return GameUiState.AskQuestion(
-            question = data.question,
-            choices = data.choices
-        )
-
-    }
-
-
 }

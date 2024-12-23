@@ -1,71 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="16dp"
     tools:context=".MainActivity">
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <TextView
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:id="@+id/questionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:layout_marginHorizontal="16dp"
         android:gravity="center"
-        tools:text = "Но очень какой то длиннннннный текст"
-       />
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="24sp"
+        tools:text="Но очень какой то длиннннннный текст" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/firstChoiceButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp" />
+
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="8dp"
         android:id="@+id/secondChoiceButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/threeChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp" />
+
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="8dp"
         android:id="@+id/fourChoiceButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/checkButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/check"/>
+        android:layout_marginHorizontal="16dp"
+        android:background="@color/check_button_color"
+        android:text="@string/check" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/nextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/next"
-        android:layout_marginVertical="8dp"/>
-
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp"
+        android:background="@color/next_button_color"
+        android:text="@string/next" />
 
 
 </LinearLayout>

@@ -44,6 +44,7 @@ class ScenarioUiTest {
         gamePage.assertAnswerChoiceStateFirstCorrect()
     }
 
+    @Test
     fun caseNumber2(){
 
         gamePage.assertAskQuestionState()

@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val viewModel = GameViewModel(GameRepository.Base())
+        val viewModel = (application as QuizApp).viewModel
 
         with(binding) {
 
@@ -57,10 +57,13 @@ class MainActivity : AppCompatActivity() {
                 uiState.update(binding = binding)
             }
 
-            val uiState = viewModel.init()
-            Log.i("!!!", "init state - $uiState")
-            uiState.update(binding = binding)
-
+            if(savedInstanceState == null){
+                val uiState = viewModel.init()
+                Log.i("!!!", "init state - $uiState")
+                uiState.update(binding = binding)
+            } else{
+                //todo save data to saveInstantState
+            }
         }
     }
 }

@@ -21,7 +21,23 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val viewModel: GameViewModel = GameViewModel()
+        val viewModel: GameViewModel = GameViewModel(object : GameRepository{
+            override fun questionAndChoices(): QuestionAndChoices {
+                TODO("Not yet implemented")
+            }
+
+            override fun saveUserChoice(index: Int) {
+                TODO("Not yet implemented")
+            }
+
+            override fun check(): CorrectAndUserChoiceIndex {
+                TODO("Not yet implemented")
+            }
+
+            override fun next() {
+                TODO("Not yet implemented")
+            }
+        })
 
         with(binding) {
 
@@ -52,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
             nextButton.setOnClickListener {
                 val uiState: GameUiState = viewModel.chooseNext()
-                uiState.uodate(binding = binding)
+                uiState.update(binding = binding)
             }
 
             val uiState = viewModel.init()

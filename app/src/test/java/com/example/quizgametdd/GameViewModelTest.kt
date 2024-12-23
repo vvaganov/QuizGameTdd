@@ -7,6 +7,7 @@ import org.junit.Before
 
 class GameViewModelTest {
 
+
     private lateinit var viewModel: GameViewModel
 
     @Before
@@ -17,7 +18,7 @@ class GameViewModelTest {
     @Test
     fun caseNumber1() {
         var actual: GameUiState = viewModel.init()
-        var expected: GameUiState = GameUiState.AskeQuestion(
+        var expected: GameUiState = GameUiState.AskQuestion(
             question = "q1",
             choices = listOf("c1", "c2", "c3", "c4")
         )
@@ -27,7 +28,7 @@ class GameViewModelTest {
         expected = GameUiState.ChoiceMake(
             question = "q1",
             choices = listOf(
-                ChoiceUiState.NotAvailableToChoose(text = "c1"),
+                ChoicesUiState.NotAvailableToChoose(text = "c1"),
                 ChoicesUiState.AvailableToChoose(text = "c2"),
                 ChoicesUiState.AvailableToChoose(text = "c3"),
                 ChoicesUiState.AvailableToChoose(text = "c4"),
@@ -35,11 +36,11 @@ class GameViewModelTest {
         )
         assertEquals(expected, actual)
 
-        actual = viewModel.viewModel.chooseCheck()
+        actual = viewModel.chooseCheck()
         expected = GameUiState.AnswerCheck(
-            quetion = "q1",
+            question = "q1",
             choices = listOf(
-                ChoiceUiState.Correct(text = "c1"),
+                ChoicesUiState.Correct(text = "c1"),
                 ChoicesUiState.NotAvailableToChoose(text = "c2"),
                 ChoicesUiState.NotAvailableToChoose(text = "c3"),
                 ChoicesUiState.NotAvailableToChoose(text = "c4"),
@@ -49,10 +50,11 @@ class GameViewModelTest {
         assertEquals(expected, actual)
     }
 
+    @Test
     fun caseNumber2() {
 
         var actual: GameUiState = viewModel.init()
-        var expected: GameUiState = GameUiState.AskeQuestion(
+        var expected: GameUiState = GameUiState.AskQuestion(
             question = "q1",
             choices = listOf("c1", "c2", "c3", "c4")
         )
@@ -106,20 +108,20 @@ class GameViewModelTest {
         )
         assertEquals(expected, actual)
 
-        actual = viewModel.viewModel.chooseCheck()
-        expected = GameUiState.AnswwerCheck(
-            quetion = "q1",
+        actual = viewModel.chooseCheck()
+        expected = GameUiState.AnswerCheck(
+            question = "q1",
             choices = listOf(
-                ChoicesUiState.InCorrect(text = "c1"),
+                ChoicesUiState.Correct(text = "c1"),
                 ChoicesUiState.NotAvailableToChoose(text = "c2"),
                 ChoicesUiState.NotAvailableToChoose(text = "c3"),
-                ChoicesUiState.isNotCorrect(text = "c4"),
+                ChoicesUiState.InCorrect(text = "c4"),
             )
         )
         assertEquals(expected, actual)
 
         actual = viewModel.chooseNext()
-        expected = GameUiState.AskeQuestion(
+        expected = GameUiState.AskQuestion(
             question = "q2",
             choices = listOf("d1", "d2", "d3", "d4")
         )
@@ -133,12 +135,12 @@ private class FakeRepository : GameRepository {
         QuestionAndChoices(
             question = "q1",
             choices = listOf("c1", "c2", "c3", "c4"),
-            corrextIndex = 0
+            correctIndex = 0
         ),
         QuestionAndChoices(
             question = "q2",
             choices = listOf("d1", "d2", "d3", "d4"),
-            corrextIndex = 0
+            correctIndex = 0
         ),
     )
 
@@ -151,13 +153,13 @@ private class FakeRepository : GameRepository {
     private var userChoiceIndex = -1
 
     override fun saveUserChoice(index: Int) {
-        userCoiceIndex = index
+        userChoiceIndex = index
     }
 
-    override fun check(): CorrectAndUserChoiceIndexces {
-        return CorrectAndUserChoiceIndexces(
-            correctIndex = questionAndChoices().corrextIndex,
-            userChoiceIndexed = corrextIndex
+    override fun check(): CorrectAndUserChoiceIndex {
+        return CorrectAndUserChoiceIndex(
+            correctIndex = questionAndChoices().correctIndex,
+            userChoiceIndexed = userChoiceIndex
         )
     }
 

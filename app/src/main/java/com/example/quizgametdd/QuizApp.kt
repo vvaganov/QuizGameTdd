@@ -7,6 +7,10 @@ class QuizApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        viewModel = GameViewModel(GameRepository.Base())
+        val sharePreferences = this.getSharedPreferences("quizAppData", MODE_PRIVATE)
+        viewModel = GameViewModel(GameRepository.Base(
+            IntCash.Base(key = "indexKey", defaultValue = 0, sharedPreferences =  sharePreferences),
+            IntCash.Base(key = "userChoiceIndexKey", defaultValue = -1, sharedPreferences = sharePreferences)
+        ))
     }
 }

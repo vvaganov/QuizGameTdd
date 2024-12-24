@@ -1,14 +1,12 @@
 package com.example.quizgametdd
 
-import android.util.Log
 import android.view.View
 import com.example.quizgametdd.databinding.ActivityMainBinding
+import java.io.Serializable
 
-interface GameUiState {
+interface GameUiState: Serializable {
 
-    fun update(binding: ActivityMainBinding) {
-
-    }
+    fun update(binding: ActivityMainBinding)
 
     abstract class Abstract(
         private val question: String,

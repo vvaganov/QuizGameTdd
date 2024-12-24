@@ -3,8 +3,9 @@ package com.example.quizgametdd
 import android.graphics.Color
 import android.util.Log
 import androidx.appcompat.widget.AppCompatButton
+import java.io.Serializable
 
-interface ChoicesUiState {
+interface ChoicesUiState : Serializable {
 
     fun update(button: AppCompatButton)
 

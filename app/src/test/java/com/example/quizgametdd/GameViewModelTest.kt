@@ -25,24 +25,23 @@ class GameViewModelTest {
 
         actual = viewModel.chooseFirst()
         expected = GameUiState.ChoiceMake(
-            question = "q1",
+
             choices = listOf(
-                ChoicesUiState.NotAvailableToChoose(text = "c1"),
-                ChoicesUiState.AvailableToChoose(text = "c2"),
-                ChoicesUiState.AvailableToChoose(text = "c3"),
-                ChoicesUiState.AvailableToChoose(text = "c4"),
+                ChoicesUiState.NotAvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
             )
         )
         assertEquals(expected, actual)
 
         actual = viewModel.chooseCheck()
         expected = GameUiState.AnswerCheck(
-            question = "q1",
             choices = listOf(
-                ChoicesUiState.Correct(text = "c1"),
-                ChoicesUiState.NotAvailableToChoose(text = "c2"),
-                ChoicesUiState.NotAvailableToChoose(text = "c3"),
-                ChoicesUiState.NotAvailableToChoose(text = "c4"),
+                ChoicesUiState.Correct,
+                ChoicesUiState.NotAvailableToChoose,
+                ChoicesUiState.NotAvailableToChoose,
+                ChoicesUiState.NotAvailableToChoose,
 
                 )
         )
@@ -61,60 +60,55 @@ class GameViewModelTest {
 
         actual = viewModel.chooseFirst()
         expected = GameUiState.ChoiceMake(
-            question = "q1",
             choices = listOf(
-                ChoicesUiState.NotAvailableToChoose(text = "c1"),
-                ChoicesUiState.AvailableToChoose(text = "c2"),
-                ChoicesUiState.AvailableToChoose(text = "c3"),
-                ChoicesUiState.AvailableToChoose(text = "c4"),
+                ChoicesUiState.NotAvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
             )
         )
         assertEquals(expected, actual)
 
         actual = viewModel.chooseSecond()
         expected = GameUiState.ChoiceMake(
-            question = "q1",
             choices = listOf(
-                ChoicesUiState.AvailableToChoose(text = "c1"),
-                ChoicesUiState.NotAvailableToChoose(text = "c2"),
-                ChoicesUiState.AvailableToChoose(text = "c3"),
-                ChoicesUiState.AvailableToChoose(text = "c4"),
+                ChoicesUiState.AvailableToChoose,
+                ChoicesUiState.NotAvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
             )
         )
         assertEquals(expected, actual)
 
         actual = viewModel.chooseThree()
         expected = GameUiState.ChoiceMake(
-            question = "q1",
             choices = listOf(
-                ChoicesUiState.AvailableToChoose(text = "c1"),
-                ChoicesUiState.AvailableToChoose(text = "c2"),
-                ChoicesUiState.NotAvailableToChoose(text = "c3"),
-                ChoicesUiState.AvailableToChoose(text = "c4"),
+                ChoicesUiState.AvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
+                ChoicesUiState.NotAvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
             )
         )
         assertEquals(expected, actual)
 
         actual = viewModel.chooseFour()
         expected = GameUiState.ChoiceMake(
-            question = "q1",
             choices = listOf(
-                ChoicesUiState.AvailableToChoose(text = "c1"),
-                ChoicesUiState.AvailableToChoose(text = "c2"),
-                ChoicesUiState.AvailableToChoose(text = "c3"),
-                ChoicesUiState.NotAvailableToChoose(text = "c4"),
+                ChoicesUiState.AvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
+                ChoicesUiState.AvailableToChoose,
+                ChoicesUiState.NotAvailableToChoose,
             )
         )
         assertEquals(expected, actual)
 
         actual = viewModel.chooseCheck()
         expected = GameUiState.AnswerCheck(
-            question = "q1",
             choices = listOf(
-                ChoicesUiState.Correct(text = "c1"),
-                ChoicesUiState.NotAvailableToChoose(text = "c2"),
-                ChoicesUiState.NotAvailableToChoose(text = "c3"),
-                ChoicesUiState.InCorrect(text = "c4"),
+                ChoicesUiState.Correct,
+                ChoicesUiState.NotAvailableToChoose,
+                ChoicesUiState.NotAvailableToChoose,
+                ChoicesUiState.InCorrect,
             )
         )
         assertEquals(expected, actual)

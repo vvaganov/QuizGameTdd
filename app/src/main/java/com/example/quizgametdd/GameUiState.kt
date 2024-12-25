@@ -1,60 +1,100 @@
 package com.example.quizgametdd
 
 import android.view.View
-import com.example.quizgametdd.databinding.ActivityMainBinding
+import com.example.quizgametdd.view.question.UpdateText
+import com.example.quizgametdd.view.choice.UpdateChoiceButton
+import com.example.quizgametdd.view.visibilityButton.UpdateVisibilityButton
 import java.io.Serializable
 
-interface GameUiState: Serializable {
+interface GameUiState : Serializable {
 
-    fun update(binding: ActivityMainBinding)
+    fun update(
+        questionCustomTextView: UpdateText,
+        firstChoiceButton: UpdateChoiceButton,
+        secondChoiceButton: UpdateChoiceButton,
+        thirdChoiceButton: UpdateChoiceButton,
+        fourChoiceButton: UpdateChoiceButton,
+        nextButton: UpdateVisibilityButton,
+        checkButton: UpdateVisibilityButton
+    )
 
-    abstract class Abstract(
-        private val question: String,
-        private val choicesListUiState: List<ChoicesUiState>,
-        private val checkVisibility: Int,
-        private val nextVisibility: Int
-    ) : GameUiState {
-        override fun update(binding: ActivityMainBinding) = with(binding) {
-            questionTextView.text = question
-            choicesListUiState[0].update(firstChoiceButton)
-            choicesListUiState[1].update(secondChoiceButton)
-            choicesListUiState[2].update(threeChoiceButton)
-            choicesListUiState[3].update(fourChoiceButton)
-            checkButton.visibility = checkVisibility
-            nextButton.visibility = nextVisibility
-        }
+    object Empty : GameUiState {
+        override fun update(
+            questionCustomTextView: UpdateText,
+            firstChoiceButton: UpdateChoiceButton,
+            secondChoiceButton: UpdateChoiceButton,
+            thirdChoiceButton: UpdateChoiceButton,
+            fourChoiceButton: UpdateChoiceButton,
+            nextButton: UpdateVisibilityButton,
+            checkButton: UpdateVisibilityButton
+        ) = Unit
     }
 
     data class AskQuestion(
         val question: String,
         val choices: List<String>
-    ) : Abstract(
-        question = question,
-        choicesListUiState = choices.map { ChoicesUiState.AvailableToChoose(text = it) },
-        checkVisibility = View.GONE,
-        nextVisibility = View.GONE
-    )
+    ) : GameUiState {
+        override fun update(
+            questionCustomTextView: UpdateText,
+            firstChoiceButton: UpdateChoiceButton,
+            secondChoiceButton: UpdateChoiceButton,
+            thirdChoiceButton: UpdateChoiceButton,
+            fourChoiceButton: UpdateChoiceButton,
+            nextButton: UpdateVisibilityButton,
+            checkButton: UpdateVisibilityButton
+        ) {
+            questionCustomTextView.update(question)
+            firstChoiceButton.update(ChoicesUiState.Initial(choices[0]))
+            secondChoiceButton.update(ChoicesUiState.Initial(choices[1]))
+            thirdChoiceButton.update(ChoicesUiState.Initial(choices[2]))
+            fourChoiceButton.update(ChoicesUiState.Initial(choices[3]))
+            nextButton.update(VisibilityUiState(View.GONE))
+            checkButton.update(VisibilityUiState(View.GONE))
+        }
+    }
 
     data class ChoiceMake(
-        val question: String,
         val choices: List<ChoicesUiState>
-    ) : Abstract(
-        question = question,
-        choicesListUiState = choices,
-        checkVisibility = View.VISIBLE,
-        nextVisibility = View.GONE
-    )
+    ) : GameUiState {
+        override fun update(
+            questionCustomTextView: UpdateText,
+            firstChoiceButton: UpdateChoiceButton,
+            secondChoiceButton: UpdateChoiceButton,
+            thirdChoiceButton: UpdateChoiceButton,
+            fourChoiceButton: UpdateChoiceButton,
+            nextButton: UpdateVisibilityButton,
+            checkButton: UpdateVisibilityButton
+        ) {
+            firstChoiceButton.update(choices[0])
+            secondChoiceButton.update(choices[1])
+            thirdChoiceButton.update(choices[2])
+            fourChoiceButton.update(choices[3])
+            checkButton.update(VisibilityUiState(View.VISIBLE))
+        }
+    }
 
     data class AnswerCheck(
-        val question: String,
         val choices: List<ChoicesUiState>
-    ) : Abstract(
-        question = question,
-        choicesListUiState = choices,
-        checkVisibility = View.GONE,
-        nextVisibility = View.VISIBLE
-    )
+    ) : GameUiState {
+        override fun update(
+            questionCustomTextView: UpdateText,
+            firstChoiceButton: UpdateChoiceButton,
+            secondChoiceButton: UpdateChoiceButton,
+            thirdChoiceButton: UpdateChoiceButton,
+            fourChoiceButton: UpdateChoiceButton,
+            nextButton: UpdateVisibilityButton,
+            checkButton: UpdateVisibilityButton
+        ) {
+            firstChoiceButton.update(choices[0])
+            secondChoiceButton.update(choices[1])
+            thirdChoiceButton.update(choices[2])
+            fourChoiceButton.update(choices[3])
+            checkButton.update(VisibilityUiState(View.GONE))
+            nextButton.update(VisibilityUiState(View.VISIBLE))
+        }
+    }
 }
+
 
 
 

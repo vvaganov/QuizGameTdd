@@ -26,8 +26,8 @@ interface GameRepository {
             ),
             QuestionAndChoices(
                 question = "What color is the sun ",
-                choices = listOf("green", "blue", "red", "yellow"),
-                correctIndex = 3
+                choices = listOf("yellow", "blue", "red", "yellow"),
+                correctIndex = 0
             )
         )
     ) : GameRepository {

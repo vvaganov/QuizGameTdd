@@ -1,39 +1,37 @@
 package com.example.quizgametdd
 
-import android.graphics.Color
-import android.util.Log
-import androidx.appcompat.widget.AppCompatButton
+import com.example.quizgametdd.view.choice.UpdateChoiceButton
 import java.io.Serializable
 
 interface ChoicesUiState : Serializable {
 
-    fun update(button: AppCompatButton)
+    fun update(update: UpdateChoiceButton)
 
     abstract class Abstract(
-        private val value: String,
         private val color: String,
         private val clickable: Boolean = false,
         private val enabled: Boolean = true
 
     ) : ChoicesUiState {
-        override fun update(button: AppCompatButton) = with(button) {
-            text = value
-            if (enabled)
-                setBackgroundColor(Color.parseColor(color))
-            isClickable = clickable
-            isEnabled = enabled
+
+        override fun update(update: UpdateChoiceButton) {
+            update.update(color, clickable, enabled)
         }
     }
 
-    data class NotAvailableToChoose(private val text: String) :
-        Abstract(value = text, color = "", enabled = false)
+    data class Initial(private val text: String) :
+        Abstract(color = "#60ABBC", clickable = true) {
+        override fun update(update: UpdateChoiceButton) {
+            super.update(update)
+            update.update(text)
+        }
+    }
 
-    data class AvailableToChoose(private val text: String) :
-        Abstract(value = text, color = "#60ABBC", clickable = true)
+    object AvailableToChoose: Abstract(color = "#60ABBC", clickable = true)
 
-    data class Correct(private val text: String) :
-        Abstract(value = text, color = "#1ADC22")
+    object NotAvailableToChoose: Abstract(color = "#C0C0C0", enabled = false)
 
-    data class InCorrect(private val text: String) :
-        Abstract(value = text, color = "#FF0606")
+    object Correct: Abstract(color = "#1ADC22")
+
+    object InCorrect: Abstract(color = "#FF0606")
 }

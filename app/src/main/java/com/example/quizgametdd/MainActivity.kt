@@ -25,62 +25,54 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val update: () -> Unit = {
+            uiState.update(
+                binding.questionTextView,
+                binding.firstChoiceButton,
+                binding.secondChoiceButton,
+                binding.threeChoiceButton,
+                binding.fourChoiceButton,
+                binding.nextButton,
+                binding.checkButton
+            )
+        }
+
         val viewModel = (application as QuizApp).viewModel
 
         with(binding) {
 
             firstChoiceButton.setOnClickListener {
                 uiState = viewModel.chooseFirst()
-                uiState.update(binding = binding)
+                update.invoke()
             }
 
             secondChoiceButton.setOnClickListener {
                 uiState = viewModel.chooseSecond()
-                uiState.update(binding = binding)
+                update.invoke()
             }
 
             threeChoiceButton.setOnClickListener {
                 uiState = viewModel.chooseThree()
-                uiState.update(binding = binding)
+                update.invoke()
             }
 
             fourChoiceButton.setOnClickListener {
                 uiState = viewModel.chooseFour()
-                uiState.update(binding = binding)
+                update.invoke()
             }
 
             checkButton.setOnClickListener {
                 uiState = viewModel.chooseCheck()
-                uiState.update(binding = binding)
+                update.invoke()
             }
 
             nextButton.setOnClickListener {
-                uiState= viewModel.chooseNext()
-                uiState.update(binding = binding)
+                uiState = viewModel.chooseNext()
+                update.invoke()
             }
 
-            if (savedInstanceState == null) {
-                uiState = viewModel.init()
-                Log.i("!!!", "init state - $uiState")
-            } else {
-                uiState = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    savedInstanceState.getSerializable(UI_STATE_KEY, GameUiState::class.java) as GameUiState
-                } else{
-                    savedInstanceState.getSerializable(UI_STATE_KEY)as GameUiState
-                }
-            }
-            uiState.update(binding = binding)
+            uiState = viewModel.init(savedInstanceState == null)
+            update.invoke()
         }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putSerializable(UI_STATE_KEY, uiState)
-        Log.i("!!!", "save UI state - $uiState")
-
-    }
-
-    companion object {
-       private const val UI_STATE_KEY = "uiState"
     }
 }

@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <TextView
+    <com.example.quizgametdd.view.question.QuestionCustomTextView
         android:id="@+id/questionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,27 +27,27 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.example.quizgametdd.view.choice.ChoiceCustomButton
         android:id="@+id/firstChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.example.quizgametdd.view.choice.ChoiceCustomButton
         android:id="@+id/secondChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.example.quizgametdd.view.choice.ChoiceCustomButton
         android:id="@+id/threeChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.example.quizgametdd.view.choice.ChoiceCustomButton
         android:id="@+id/fourChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.example.quizgametdd.view.visibilityButton.VisibilityCustomButton
         android:id="@+id/checkButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         android:background="@color/check_button_color"
         android:text="@string/check" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.example.quizgametdd.view.visibilityButton.VisibilityCustomButton
         android:id="@+id/nextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

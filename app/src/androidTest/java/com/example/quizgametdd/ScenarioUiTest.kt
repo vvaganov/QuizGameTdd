@@ -85,4 +85,173 @@ class ScenarioUiTest {
         gamePage.assertAskQuestionState()
 
     }
+
+    @Test
+    fun caseNumber3(){
+
+        gamePage.assertAskQuestionState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAskQuestionState()
+
+        gamePage.clickFirstChoice()
+        gamePage.assertFirstChoiceMakeState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertFirstChoiceMakeState()
+
+        gamePage.clickCheck()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+
+        gamePage.clickNext()
+
+        gamePage = GamePage(
+            question = "What color is the sky grass",
+            choices = listOf("green", "blue", "red", "yellow")
+        )
+
+        gamePage.assertAskQuestionState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAskQuestionState()
+
+        gamePage.clickFirstChoice()
+        gamePage.assertFirstChoiceMakeState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertFirstChoiceMakeState()
+
+        gamePage.clickCheck()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+
+        gamePage.clickNext()
+        gamePage.assertNotVisible()
+
+        var gameOverPage = GameOverPage(correct = 2, incorrect = 0)
+
+        gameOverPage.assertInitiallGameOver()
+        activityScenarioRule.scenario.recreate()
+        gameOverPage.assertInitiallGameOver()
+
+        gameOverPage.clickNewGame()
+        gameOverPage.assertNotVisible()
+
+        gamePage = GamePage(
+            question = "What color is the sky sun ",
+            choices = listOf("yellow", "blue", "red", "green")
+        )
+
+        gamePage.assertAskQuestionState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAskQuestionState()
+
+        gamePage.clickSecondChoice()
+        gamePage.assertSecondChoiceMakeState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertSecondChoiceMakeState()
+
+        gamePage.clickCheck()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+
+        gamePage.clickNext()
+
+        gamePage = GamePage(
+            question = "What color is the sky crocodile ",
+            choices = listOf("green", "blue", "red", "yellow")
+        )
+
+        gamePage.assertAskQuestionState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAskQuestionState()
+
+        gamePage.clickSecondChoice()
+        gamePage.assertSecondChoiceMakeState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertSecondChoiceMakeState()
+
+        gamePage.clickCheck()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+
+        gamePage.clickNext()
+        gamePage.assertNotVisible()
+
+        gameOverPage = GameOverPage(correct = 0, incorrect = 2)
+
+        gameOverPage.assertInitiallGameOver()
+        activityScenarioRule.scenario.recreate()
+        gameOverPage.assertInitiallGameOver()
+
+        gameOverPage.clickNewGame()
+        gameOverPage.assertNotVisible()
+
+        gamePage = GamePage(
+            question = "What color is the sky blood ",
+            choices = listOf("red", "blue", "green", "yellow")
+        )
+
+        gamePage.assertAskQuestionState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAskQuestionState()
+
+        gamePage.clickFirstChoice()
+        gamePage.assertFirstChoiceMakeState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertFirstChoiceMakeState()
+
+        gamePage.clickCheck()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+
+        gamePage.clickNext()
+
+        gamePage = GamePage(
+            question = "What color is the sky water",
+            choices = listOf("blue", "red", "green", "yellow")
+        )
+
+        gamePage.assertAskQuestionState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAskQuestionState()
+
+        gamePage.clickSecondChoice()
+        gamePage.assertSecondChoiceMakeState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertSecondChoiceMakeState()
+
+        gamePage.clickCheck()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAnswerChoiceStateFirstCorrectSecondInCorrect()
+
+        gamePage.clickNext()
+        gamePage.assertNotVisible()
+
+        gameOverPage = GameOverPage(correct = 1, incorrect = 1)
+        gameOverPage.assertInitiallGameOver()
+        activityScenarioRule.scenario.recreate()
+        gameOverPage.assertInitiallGameOver()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 }

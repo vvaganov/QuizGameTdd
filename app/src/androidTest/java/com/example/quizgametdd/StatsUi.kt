@@ -13,26 +13,28 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Matcher
 
-class QuestionUi(
-    text: String,
+class StatsUi(
+    correct: Int,
+    incorrect: Int,
     containerIdViewMatcher: Matcher<View>,
     classTypeMatchers: Matcher<View>
 ) {
-
-    private val interaction: ViewInteraction = onView(
-        allOf(
-            containerIdViewMatcher,
-            classTypeMatchers,
-            withId(R.id.questionTextView),
-            withText(text),
-            isAssignableFrom(TextView::class.java)
+    private val interaction: ViewInteraction =
+        onView(
+            allOf(
+                withId(R.id.statsTextWiew),
+                containerIdViewMatcher,
+                classTypeMatchers,
+                isAssignableFrom(TextView::class.java),
+                withText("Corrects: $correct\nIncorrects: $incorrect")
+            )
         )
-    )
-    fun assertTextVisible() {
+
+    fun assertVisible(){
         interaction.check(matches(isDisplayed()))
     }
 
-    fun assertDoesNotExist(){
+    fun diesNotExist() {
         interaction.check(doesNotExist())
     }
 }

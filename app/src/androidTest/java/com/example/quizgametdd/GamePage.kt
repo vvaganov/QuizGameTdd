@@ -122,5 +122,9 @@ GamePage(
         nextButtonUI.click()
     }
 
+    fun assertNotVisible() {
+        questionUi.assertDoesNotExist()
+    }
+
 
 }

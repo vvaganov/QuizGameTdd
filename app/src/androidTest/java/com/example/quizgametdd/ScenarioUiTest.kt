@@ -129,9 +129,9 @@ class ScenarioUiTest {
 
         var gameOverPage = GameOverPage(correct = 2, incorrect = 0)
 
-        gameOverPage.assertInitiallGameOver()
+        gameOverPage.assertInitialGameOverState()
         activityScenarioRule.scenario.recreate()
-        gameOverPage.assertInitiallGameOver()
+        gameOverPage.assertInitialGameOverState()
 
         gameOverPage.clickNewGame()
         gameOverPage.assertNotVisible()
@@ -181,9 +181,9 @@ class ScenarioUiTest {
 
         gameOverPage = GameOverPage(correct = 0, incorrect = 2)
 
-        gameOverPage.assertInitiallGameOver()
+        gameOverPage.assertInitialGameOverState()
         activityScenarioRule.scenario.recreate()
-        gameOverPage.assertInitiallGameOver()
+        gameOverPage.assertInitialGameOverState()
 
         gameOverPage.clickNewGame()
         gameOverPage.assertNotVisible()
@@ -232,9 +232,9 @@ class ScenarioUiTest {
         gamePage.assertNotVisible()
 
         gameOverPage = GameOverPage(correct = 1, incorrect = 1)
-        gameOverPage.assertInitiallGameOver()
+        gameOverPage.assertInitialGameOverState()
         activityScenarioRule.scenario.recreate()
-        gameOverPage.assertInitiallGameOver()
+        gameOverPage.assertInitialGameOverState()
 
 
 

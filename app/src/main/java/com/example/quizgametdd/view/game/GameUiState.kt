@@ -1,6 +1,8 @@
-package com.example.quizgametdd
+package com.example.quizgametdd.view.game
 
 import android.view.View
+import com.example.quizgametdd.view.choice.ChoicesUiState
+import com.example.quizgametdd.view.visibilityButton.VisibilityUiState
 import com.example.quizgametdd.view.question.UpdateText
 import com.example.quizgametdd.view.choice.UpdateChoiceButton
 import com.example.quizgametdd.view.visibilityButton.UpdateVisibilityButton

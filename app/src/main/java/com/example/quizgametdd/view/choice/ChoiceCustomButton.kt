@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.os.Parcelable
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatButton
-import com.example.quizgametdd.ChoicesUiState
 import com.example.quizgametdd.view.question.UpdateText
 
 class ChoiceCustomButton : AppCompatButton, UpdateChoiceButton {

@@ -1,4 +1,6 @@
-package com.example.quizgametdd
+package com.example.quizgametdd.view.game
+
+import com.example.quizgametdd.view.choice.ChoicesUiState
 
 class GameViewModel(private val repository: GameRepository) {
 

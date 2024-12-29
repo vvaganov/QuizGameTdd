@@ -1,4 +1,8 @@
-package com.example.quizgametdd
+package com.example.quizgametdd.view.game
+
+import com.example.quizgametdd.view.choice.CorrectAndUserChoiceIndex
+import com.example.quizgametdd.IntCash
+import com.example.quizgametdd.QuestionAndChoices
 
 interface GameRepository {
 

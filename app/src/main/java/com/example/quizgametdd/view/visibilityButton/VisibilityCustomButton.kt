@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Parcelable
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatButton
-import com.example.quizgametdd.VisibilityUiState
 
 class VisibilityCustomButton : AppCompatButton, UpdateVisibilityButton {
 

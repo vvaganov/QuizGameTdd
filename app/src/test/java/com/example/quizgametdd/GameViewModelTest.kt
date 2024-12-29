@@ -1,5 +1,10 @@
 package com.example.quizgametdd
 
+import com.example.quizgametdd.view.choice.ChoicesUiState
+import com.example.quizgametdd.view.choice.CorrectAndUserChoiceIndex
+import com.example.quizgametdd.view.game.GameRepository
+import com.example.quizgametdd.view.game.GameUiState
+import com.example.quizgametdd.view.game.GameViewModel
 import org.junit.Test
 
 import org.junit.Assert.*

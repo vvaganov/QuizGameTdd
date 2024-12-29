@@ -1,6 +1,5 @@
-package com.example.quizgametdd
+package com.example.quizgametdd.view.choice
 
-import com.example.quizgametdd.view.choice.UpdateChoiceButton
 import java.io.Serializable
 
 interface ChoicesUiState : Serializable {

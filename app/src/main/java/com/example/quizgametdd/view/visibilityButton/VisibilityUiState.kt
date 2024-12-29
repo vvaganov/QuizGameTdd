@@ -1,6 +1,5 @@
-package com.example.quizgametdd
+package com.example.quizgametdd.view.visibilityButton
 
-import com.example.quizgametdd.view.visibilityButton.UpdateVisibilityButton
 import java.io.Serializable
 
 data class VisibilityUiState (private val visibility:Int) :Serializable {

@@ -22,7 +22,7 @@ class StatsUi(
     private val interaction: ViewInteraction =
         onView(
             allOf(
-                withId(R.id.statsTextWiew),
+                withId(R.id.statsTextView),
                 containerIdViewMatcher,
                 classTypeMatchers,
                 isAssignableFrom(TextView::class.java),
